@@ -6,7 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Theme extends AbstractEntity{
+public class Theme extends AbstractEntity {
 
     @Column(name = "theme_name")
     private String name;
@@ -14,7 +14,7 @@ public class Theme extends AbstractEntity{
     @Column
     private String body;
 
-    @JoinColumn
+    @JoinColumn(name = "unit_id")
     @ManyToOne
     private Unit unit;
 

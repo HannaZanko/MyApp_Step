@@ -1,14 +1,19 @@
 package com.zanko.homework_2_myapp.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class User extends AbstractEntity {
-
 
     @Column(name = "u_name")
     private String username;
@@ -25,8 +30,15 @@ public class User extends AbstractEntity {
     @Column(name = "login")
     private String login;
 
-    @JoinColumn
-    @OneToMany
-    private Set<Test> tests;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "user_unit",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "unit_id"))
+    private Set<Unit> units;
 }
