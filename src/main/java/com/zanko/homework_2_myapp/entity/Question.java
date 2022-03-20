@@ -3,10 +3,7 @@ package com.zanko.homework_2_myapp.entity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
@@ -15,6 +12,7 @@ import javax.persistence.ManyToOne;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "questions")
 public class Question extends AbstractEntity {
 
     @Column(name = "body")

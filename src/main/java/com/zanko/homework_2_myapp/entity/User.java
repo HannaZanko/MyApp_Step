@@ -13,6 +13,7 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "users")
 public class User extends AbstractEntity {
 
     @Column(name = "u_name")
@@ -41,4 +42,7 @@ public class User extends AbstractEntity {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "unit_id"))
     private Set<Unit> units;
+
+    @OneToMany(mappedBy = "unit")
+    private Set<Testing> testing;
 }
